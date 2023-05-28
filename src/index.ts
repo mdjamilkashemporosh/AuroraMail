@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
+import { createTransport } from 'nodemailer';
 import morgan from "morgan";
+import axios from "axios";
+import handlebars from "handlebars";
 import fs from "fs";
 import path from "path";
 import cors from "cors";
@@ -51,16 +54,48 @@ const validateData = [
       return true;
     }),
 ];
+
+async function fetchTemplate(templateURL: string): Promise<string> {
+  try {
+    const response = await axios.get(templateURL);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching template:", error);
+    throw new Error("Failed to fetch template");
+  }
+}
+
 // Request handler
-const sendEmailHandler = (req: Request, res: Response) => {
+const sendEmailHandler = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
-  const { email, subject, templateURL, others } = req.body;
-  // Process the valid data
-  res.send("Hello, world!");
+  try {
+    const { email, subject, templateURL, others } = req.body;
+    const transporter = createTransport({
+      host: 'smtp.hostinger.com',
+      port: 465,
+      secure: true, // upgrade later with STARTTLS
+      auth: {
+        user: 'demo@imaginebeyond.net',
+        pass: 'Poroshpo123@',
+      },
+    });
+    fetchTemplate(templateURL).then((content) => {
+      const template = handlebars.compile(content);
+      const html = template(others);
+      transporter.sendMail({
+        from: 'demo@imaginebeyond.net',
+        to: email,
+        subject: subject,
+        html: html,
+      });
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).send("Error fetching data");
+  }
 };
 // Route handler
 app.post("/send-email", validateData, sendEmailHandler);
