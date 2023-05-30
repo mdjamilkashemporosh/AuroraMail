@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc && npm run dev"
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "md jamil kashem porosh",

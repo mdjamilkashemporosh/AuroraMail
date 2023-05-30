@@ -7,9 +7,11 @@ import path from "path";
 import cors from "cors";
 import bodyParser from "body-parser";
 import helmet from "helmet";
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 8000;
 
 // Create a logs directory if it doesn't exist
 const logsDirectory = path.join(__dirname, "..", "logs");
