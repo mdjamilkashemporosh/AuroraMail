@@ -9,6 +9,13 @@ This is an open-source project that provides a SMTP server implementation using 
 - Dynamic data injection into email templates
 - Easy setup and configuration
 
+## How it Works
+
+- When a request for an HTML template is made, the application first checks if it exists in the Redis cache.
+- If the template is found in the cache, it is retrieved and served directly, avoiding the need for expensive template rendering.
+- If the template is not found in the cache, it is fetched from the persistent storage, rendered, and then stored in Redis for future use.
+- Subsequent requests for the same template can then be served directly from the cache, significantly reducing the response time.
+
 ## Getting Started
 
 Clone this repository to your local machine:
