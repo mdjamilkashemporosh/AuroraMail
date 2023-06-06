@@ -83,6 +83,10 @@ npm run start
 ```
 The SMTP server will start and listen on ```localhost:8000``` by default or on the PORT specified in the ```.env``` file.
 
+## Testing
+
+In sha'Allah, the test code will be released within the next couple of months, as we continue to work diligently on its development.
+
 ## Contributing
 
 If you would like to contribute to this web application, please open an issue on GitHub to discuss your ideas or proposed changes. Pull requests are also welcome.
