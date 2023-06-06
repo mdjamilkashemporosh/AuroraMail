@@ -2,6 +2,12 @@
 
 This is an open-source project that provides a SMTP server implementation using Node.js and Nodemailer. It allows you to send emails using a customizable HTML template (.hbs file) with dynamic data.
 
+## Demo
+
+
+https://github.com/mdjamilkashemporosh/AuroraMail/assets/50365984/3b95abd1-311d-48bc-b40d-3f7e9af0a4da
+
+
 ## Features
 
 - SMTP server implementation using Node.js and Nodemailer
