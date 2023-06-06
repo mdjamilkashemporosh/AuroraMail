@@ -1,5 +1,5 @@
 import express from "express";
-import { dataValidation } from "./middlewares/requestValidator";
+import  {dataValidation}  from "./middlewares/requestValidator";
 import handleSendEmail from "./controllers/emailController";
 import morgan from "morgan";
 import fs from "fs";
