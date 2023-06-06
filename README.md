@@ -44,6 +44,7 @@ https://github.com/mdjamilkashemporosh/AuroraMail/assets/50365984/3b95abd1-311d-
 </html>
 ```
 - Upload the template file (template.hbs) to any CDN network or a publicly accessible URL.
+- The ``` /send-email ``` route serves as the primary route for sending emails.
 - To send an email, you need to provide the following data: \
 ``` email (required) ```: The recipient's email address. \
 ``` subject (required) ```: The subject line of the email. \
