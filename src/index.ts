@@ -10,6 +10,8 @@ import helmet from "helmet";
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+// Create Express application
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -18,6 +20,7 @@ const logsDirectory = path.join(__dirname, "..", "logs");
 if (!fs.existsSync(logsDirectory)) {
   fs.mkdirSync(logsDirectory);
 }
+
 // Create a write stream for the log file
 const logStream = fs.createWriteStream(path.join(logsDirectory, "access.log"), {
   flags: "a",
@@ -25,13 +28,20 @@ const logStream = fs.createWriteStream(path.join(logsDirectory, "access.log"), {
 
 // Middleware for logging
 app.use(morgan("combined", { stream: logStream }));
+
+// Enable CORS
 app.use(cors());
+
+// Parse request body as JSON
 app.use(bodyParser.json());
+
+// Set security headers
 app.use(helmet());
 
-// Route handler
+// Route handler for sending email
 app.post("/send-email", dataValidation, handleSendEmail);
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
