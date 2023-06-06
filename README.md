@@ -44,7 +44,12 @@ https://github.com/mdjamilkashemporosh/AuroraMail/assets/50365984/3b95abd1-311d-
 </html>
 ```
 - Upload the template file (template.hbs) to any CDN network or a publicly accessible URL.
-- When making a request to send an email, include the template URL and the required data within the data object. Here's an example request payload:
+- To send an email, you need to provide the following data: \
+``` email (required) ```: The recipient's email address. \
+``` subject (required) ```: The subject line of the email. \
+``` templateURL (required)```: The URL of the uploaded template.hbs file on the CDN network. \
+``` data ```: An object containing the required data for dynamic content in the template. The properties of this object may vary depending on the specific template you are using. For example:
+
 ``` json 
 {
   "email": "jamilkashem@zoho.com",
@@ -56,10 +61,6 @@ https://github.com/mdjamilkashemporosh/AuroraMail/assets/50365984/3b95abd1-311d-
 }
 
 ```
-```email```: The recipient's email address.
-```subject```: The subject line of the email.
-```templateURL```: The URL of the uploaded template.hbs file on the CDN network.
-```data```: An object containing the required data for dynamic content in the template. The properties of this object may vary depending on the specific template you are using.
 
 ## Getting Started
 
