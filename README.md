@@ -79,6 +79,17 @@ Install the dependencies :
 ```
 npm install
 ```
+Configure the SMTP server settings in the ``` config.ts ``` file and Build the TypeScript code by running ``` npm run build ```.
+
+Note that the configuration may vary for different email service providers such as Google Cloud. Please refer to the documentation of your specific provider for the appropriate configuration settings.
+
+Start the SMTP server:
+
+```
+npm run start
+```
+The SMTP server will start and listen on ```localhost:8000``` by default or on the PORT specified in the ```.env``` file.
+
 Or using docker: 
 
 build command: (for development)
@@ -100,16 +111,6 @@ run command: (for production)
 ```
 docker run -p 8000:8000 your-image-name 
 ```
-Configure the SMTP server settings in the ``` config.ts ``` file and Build the TypeScript code by running ``` npm run build ```.
-
-Note that the configuration may vary for different email service providers such as Google Cloud. Please refer to the documentation of your specific provider for the appropriate configuration settings.
-
-Start the SMTP server:
-
-```
-npm run start
-```
-The SMTP server will start and listen on ```localhost:8000``` by default or on the PORT specified in the ```.env``` file.
 
 ## Testing
 
